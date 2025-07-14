@@ -1,0 +1,11 @@
+{
+  "functions": {
+    "api/appointment-webhook.js": {
+      "maxDuration": 10
+    }
+  },
+  "env": {
+    "SHOPIFY_ACCESS_TOKEN": "@shopify-access-token",
+    "SHOP_DOMAIN": "@shop-domain"
+  }
+}
