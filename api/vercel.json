@@ -5,7 +5,7 @@
     }
   },
   "env": {
-    "SHOPIFY_ACCESS_TOKEN": "@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",
-    "SHOP_DOMAIN": "@n5kscd-ga.myshopify.com"
+    "SHOPIFY_ACCESS_TOKEN": "@shopify-access-token",
+    "SHOP_DOMAIN": "@shop-domain"
   }
 }
