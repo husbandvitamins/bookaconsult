@@ -39,14 +39,14 @@ export default async function handler(req, res) {
       });
     }
     
-    console.log(`🎯 Processing appointment for customer: ${customer_email} (ID: ${customer_id})`);
-    console.log(`📋 Appointment: ${appointment_details?.event_type} with ${appointment_details?.assigned_to}`);
+    //console.log(`🎯 Processing appointment for customer: ${customer_email} (ID: ${customer_id})`);
+    //console.log(`📋 Appointment: ${appointment_details?.event_type} with ${appointment_details?.assigned_to}`);
     
     // Update customer tags
     const result = await updateCustomerTags(customer_id, customer_tags_before);
     
     // Log success
-    console.log(`✅ Successfully processed appointment for ${customer_email}`);
+    //console.log(`✅ Successfully processed appointment for ${customer_email}`);
     
     // Return success response
     res.status(200).json({ 
@@ -61,7 +61,7 @@ export default async function handler(req, res) {
     });
     
   } catch (error) {
-    console.error('❌ Error processing appointment:', error);
+    //console.error('❌ Error processing appointment:', error);
     
     // Return error response
     res.status(500).json({ 
@@ -81,14 +81,14 @@ async function updateCustomerTags(customerId, currentTagsString) {
     throw new Error('Missing Shopify configuration. Please set SHOPIFY_ACCESS_TOKEN and SHOP_DOMAIN environment variables.');
   }
   
-  console.log(`🔄 Updating tags for customer ${customerId}`);
-  console.log(`📋 Current tags: ${currentTagsString}`);
+  //console.log(`🔄 Updating tags for customer ${customerId}`);
+  //console.log(`📋 Current tags: ${currentTagsString}`);
   
   // If we have current tags from frontend, use them, otherwise fetch from Shopify
   let currentTags = currentTagsString;
   
   if (!currentTags) {
-    console.log('📡 Fetching current customer data from Shopify...');
+    //console.log('📡 Fetching current customer data from Shopify...');
     
     // Get current customer data
     const customerResponse = await fetch(`https://${SHOP_DOMAIN}/admin/api/2024-01/customers/${customerId}.json`, {
@@ -119,7 +119,7 @@ async function updateCustomerTags(customerId, currentTagsString) {
   
   const updatedTags = tagsArray.join(',');
   
-  console.log(`🔄 Updating tags from: "${currentTags}" to: "${updatedTags}"`);
+  //console.log(`🔄 Updating tags from: "${currentTags}" to: "${updatedTags}"`);
   
   // Update customer tags via Shopify API
   const updateResponse = await fetch(`https://${SHOP_DOMAIN}/admin/api/2024-01/customers/${customerId}.json`, {
@@ -143,7 +143,7 @@ async function updateCustomerTags(customerId, currentTagsString) {
   
   const updateResult = await updateResponse.json();
   
-  console.log(`✅ Tags updated successfully for customer ${customerId}`);
+  //console.log(`✅ Tags updated successfully for customer ${customerId}`);
   
   return {
     tags_updated: true,
